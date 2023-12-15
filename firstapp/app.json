@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "firstapp",
-    "slug": "firstapp",
+    "name": "react-native",
+    "slug": "snack-207d8efb-89df-4c7f-9462-9d17a13ebcd5",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -25,6 +25,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "firstapp"
   }
 }
