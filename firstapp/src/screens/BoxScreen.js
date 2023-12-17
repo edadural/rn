@@ -24,8 +24,8 @@ export default function BoxScreen() {
           return (
             <View
               style={{
-                height: 50,
-                width: 50,
+                height: 80,
+                width: 80,
                 backgroundColor: item,
                 marginVertical: 10,
               }}
