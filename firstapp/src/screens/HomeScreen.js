@@ -22,8 +22,12 @@ export default function HomeScreen({ navigation }) {
         onPress={() => navigation.navigate('Kutu Uygulaması')}
       />
       <Button
-        title="Renk Degistir"
-        onPress={() => navigation.navigate('Renk Degistir')}
+        title="Renk Değiştir"
+        onPress={() => navigation.navigate('Renk Değiştir')}
+      />
+      <Button
+        title="Şifre Ekranı"
+        onPress={() => navigation.navigate('Şifre Ekranı')}
       />
     </View>
   );
