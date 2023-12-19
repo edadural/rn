@@ -29,6 +29,10 @@ export default function HomeScreen({ navigation }) {
         title="Şifre Ekranı"
         onPress={() => navigation.navigate('Şifre Ekranı')}
       />
+      <Button
+        title="Design Ekranı"
+        onPress={() => navigation.navigate('Design Ekranı')}
+      />
     </View>
   );
 }
