@@ -5,21 +5,32 @@ export default () => {
 
     const [results, setResults] = useState([]);
 
+    const [errorMessage, setErrorMessage] = useState('');
+
     const searchApi = async (searchTerm) => {
-        const response = await yelp.get('/search', {
-            params: {
-                limit: 50,
-                term: searchTerm,
-                location: 'İstanbul',
-            },
-        });
-        setResults(response.data.businesses);
+
+        try {
+
+            const response = await yelp.get('/search', {
+                params: {
+                    limit: 50,
+                    term: searchTerm,
+                    location: 'İstanbul',
+                },
+            });
+            setResults(response.data.businesses);
+            setErrorMessage("");
+
+        } catch (error) {
+            setErrorMessage('Bağlantı Hatası');
+        }
+
     };
 
     useEffect(() => {
         searchApi('Toast');
     }, []);
 
-    return [searchApi, results];
+    return [searchApi, results, errorMessage];
 
 }
