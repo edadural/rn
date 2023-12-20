@@ -1,7 +1,19 @@
 import { Button, Image, Modal, StyleSheet, TextInput, View } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function CourseInput({ visible }) {
+export default function CourseInput({ visible, onAddCourse, onCancel }) {
+
+    const [enteredCourseText, setEnteredCourseText] = useState();
+
+    const addCourseHandler = () => {
+        onAddCourse(enteredCourseText);
+        setEnteredCourseText('');
+    }
+
+    // const courseInputHandler = (enteredText) => {
+    //     setEnteredCourseText(enteredText);
+    // }
+
     return (
         <Modal
             animationType="slide"
@@ -15,13 +27,23 @@ export default function CourseInput({ visible }) {
                 <TextInput
                     style={styles.textInput}
                     placeholder='Yeni Kurs Ekle!'
+                    value={enteredCourseText}
+                    onChangeText={(text) => { setEnteredCourseText(text) }}         // onChangeText={courseInputHandler}
                 />
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
-                        <Button title='İptal Et' color="red" />
+                        <Button
+                            title='İptal Et'
+                            color="red"
+                            onPress={onCancel}
+                        />
                     </View>
                     <View style={styles.button}>
-                        <Button title='Ekle' color="blue" />
+                        <Button
+                            title='Ekle'
+                            color="blue"
+                            onPress={addCourseHandler}
+                        />
                     </View>
                 </View>
             </View>
