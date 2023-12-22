@@ -3,7 +3,7 @@ import React, { useContext } from 'react'
 import { Context } from '../context/BlogContext';
 import { EvilIcons } from '@expo/vector-icons';
 
-export default function IndexScreen() {
+export default function IndexScreen({ navigation }) {
 
     const { state, addBlogPost, deleteBlogPost } = useContext(Context);
 
@@ -21,14 +21,17 @@ export default function IndexScreen() {
                 keyExtractor={(blogPost) => blogPost.title}
                 renderItem={({ item }) => {
                     return (
-                        <View style={styles.row}>
-                            <Text style={styles.title}>{item.title}</Text>
-                            <TouchableOpacity
-                                onPress={()=>deleteBlogPost(item.id)}
-                            >
-                                <EvilIcons name="trash" size={28} color="black" />
-                            </TouchableOpacity>
-                        </View>
+                        <TouchableOpacity
+                            onPress={() => navigation.navigate('Show', { id: item.id })}>
+                            <View style={styles.row}>
+                                <Text style={styles.title}>{item.title}</Text>
+                                <TouchableOpacity
+                                    onPress={() => deleteBlogPost(item.id)}
+                                >
+                                    <EvilIcons name="trash" size={28} color="black" />
+                                </TouchableOpacity>
+                            </View>
+                        </TouchableOpacity>
                     );
                 }}
             />
