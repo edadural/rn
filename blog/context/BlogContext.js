@@ -1,6 +1,5 @@
 import React, { useReducer, useState } from "react";
-
-const BlogContext = React.createContext();
+import createDataContext from "./createDataContext";
 
 const blogReducer = (state, action) => {
     switch (action.type) {
@@ -11,31 +10,14 @@ const blogReducer = (state, action) => {
     }
 };
 
-export const BlogProvider = ({ children }) => {
-
-    // const [blogPosts, setBlogPosts] = useState([
-    //     { title: 'React Native' },
-    //     { title: 'Javascript' },
-    // ]);
-
-    const [blogPosts, dispatch] = useReducer(blogReducer, [
-        { title: 'React Native' },
-        { title: 'Javascript' },
-    ]);
-
-    const addBlogPost = () => {
-        // setBlogPost([...blogPost, { title: 'Vue Js' }]);
-
-        dispatch({ type: 'add_blogpost' })
-    }
-
-    return (
-        <BlogContext.Provider
-            value={{ data: blogPosts, addBlogPost }}
-        >
-            {children}
-        </BlogContext.Provider>
-    );
+const addBlogPost = (dispatch) => {
+    return () => {      // callback fonk. geriye donsun diye
+        dispatch({ type: 'add_blogpost' });
+    };
 };
 
-export default BlogContext;
+export const { Context, Provider } = createDataContext(
+    blogReducer,
+    { addBlogPost },
+    []
+);

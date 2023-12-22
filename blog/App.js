@@ -3,13 +3,13 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import IndexScreen from './screens/IndexScreen';
 import CreateScreen from './screens/CreateScreen';
-import { BlogProvider } from './context/BlogContext';
+import { Provider } from './context/BlogContext';
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    <BlogProvider>
+    <Provider>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerTitle: 'Blog Uygulaması' }}>
           <Stack.Screen
@@ -22,7 +22,7 @@ export default function App() {
           />
         </Stack.Navigator>
       </NavigationContainer>
-    </BlogProvider>
+    </Provider>
   );
 }
 
