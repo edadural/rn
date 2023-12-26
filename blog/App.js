@@ -23,7 +23,7 @@ export default function App() {
                 <TouchableOpacity
                   onPress={() => navigation.navigate("Create")}
                 >
-                  <AntDesign name="plus" size={24} color="black" />
+                  <AntDesign name="plus" size={26} color="black" />
                 </TouchableOpacity>
               )
             })}

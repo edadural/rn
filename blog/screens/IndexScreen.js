@@ -11,10 +11,10 @@ export default function IndexScreen({ navigation }) {
         <View>
             {/* <Text>IndexScreen</Text> */}
 
-            <Button
+            {/* <Button
                 title="Ekle"
                 onPress={addBlogPost}
-            />
+            /> */}
 
             <FlatList
                 data={state}
