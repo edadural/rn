@@ -25,7 +25,7 @@ export default function ShowScreen({ route }) {
 const styles = StyleSheet.create({
     mainContainer: {
         alignItems: 'center',
-        marginTop: 10,
+        marginTop: 20,
     },
     container: {
         borderWidth: 1,
@@ -33,9 +33,11 @@ const styles = StyleSheet.create({
         borderRadius: 30,
         alignItems: 'center',
         width: '80%',
+        paddingVertical: 10,
     },
     label: {
         fontSize: 30,
+        marginBottom: 8,
     },
     content: {
         fontSize: 18,

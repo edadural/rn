@@ -35,10 +35,10 @@ export default function App() {
           <Stack.Screen
             name="Show"
             component={ShowScreen}
-            options={({ navigation }) => ({
+            options={({ navigation, route }) => ({
               headerRight: () => (
                 <TouchableOpacity
-                  onPress={() => navigation.navigate("Edit")}
+                  onPress={() => navigation.navigate("Edit", { id: route.params.id })}
                 >
                   <AntDesign name="edit" size={26} color="black" />
                 </TouchableOpacity>
