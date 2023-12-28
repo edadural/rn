@@ -16,8 +16,6 @@ export default function LoginScreen() {
                 navigation.navigate('Home');
             }
         })
-        return () => {
-        }
     }, [])
 
 
