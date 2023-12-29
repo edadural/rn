@@ -17,11 +17,13 @@ export default function GameOverScreen({ roundsNumber, userNumber, onStartNewGam
                 <Text style={styles.countAndNumber}>{roundsNumber}</Text> denemeyle
                 <Text style={styles.countAndNumber}> {userNumber}</Text> sayısını buldun
             </Text>
-            <CustomButton
-                onPress={onStartNewGame}
-            >
-                Yeni Oyuna Başla
-            </CustomButton>
+            <View style={styles.border}>
+                <CustomButton
+                    onPress={onStartNewGame}
+                >
+                    Yeni Oyuna Başla
+                </CustomButton>
+            </View>
         </View>
     )
 }
@@ -53,5 +55,10 @@ const styles = StyleSheet.create({
     },
     countAndNumber: {
         color: 'brown',
+    },
+    border: {
+        borderWidth: 3,
+        borderRadius: 20,
+        borderColor: 'white',
     },
 })

@@ -20,6 +20,7 @@ export default function CustomButton({ children, onPress }) {
 const styles = StyleSheet.create({
     buttonContainer: {
         margin: 5,
+        marginHorizontal: 40,
     },
     buttonInnerContainer: {
         paddingVertical: 8,
@@ -27,7 +28,7 @@ const styles = StyleSheet.create({
     text: {
         textAlign: 'center',
         color: 'white',
-        fontSize: 20,
+        fontSize: 23,
         fontWeight: '600',
     },
     pressed: {

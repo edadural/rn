@@ -1,9 +1,10 @@
-import { Alert, StyleSheet, Text, View } from 'react-native'
+import { Alert, FlatList, StyleSheet, Text, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Title from '../components/Title'
 import ComputerNumber from '../components/ComputerNumber';
 import CustomButton from '../components/CustomButton';
 import { AntDesign } from '@expo/vector-icons';
+import ComputerGuess from '../components/ComputerGuess';
 
 let minNumber = 1;
 let maxNumber = 100;
@@ -21,8 +22,8 @@ export default function GameScreen({ userNumber, onGameOver }) {
     }, [currentGuess, userNumber, onGameOver]);
 
     useEffect(() => {
-        let minNumber = 1;
-        let maxNumber = 100;
+        minNumber = 1;
+        maxNumber = 100;
     }, [])
 
     function nextGuessHandler(direction) {
@@ -63,7 +64,7 @@ export default function GameScreen({ userNumber, onGameOver }) {
             <Title>Bilgisayar Tahmini</Title>
             <ComputerNumber>{currentGuess}</ComputerNumber>
             <View style={styles.card}>
-                <Text style={styles.title}>Tahmin edilen sayıyı</Text>
+                <Text style={styles.title}>Tahmin Edilen Sayıyı</Text>
                 <View style={styles.buttonsContainer}>
                     <CustomButton
                         onPress={nextGuessHandler.bind(this, 'lower')}
@@ -76,6 +77,18 @@ export default function GameScreen({ userNumber, onGameOver }) {
                         <AntDesign name="plus" size={24} color="white" />
                     </CustomButton>
                 </View>
+            </View>
+            <View style={styles.listContainer}>
+                <FlatList
+                    data={guessCounts}
+                    keyExtractor={(itemData) => itemData}
+                    renderItem={(itemData) => (
+                        <ComputerGuess
+                            roundNumber={guessCounts.length - itemData.index}
+                            guess={itemData.item}
+                        />
+                    )}
+                />
             </View>
         </View>
     )
@@ -92,7 +105,8 @@ const styles = StyleSheet.create({
     title: {
         color: 'white',
         fontSize: 25,
-        marginBottom: 15,
+        marginBottom: 10,
+        marginTop: 10,
     },
     card: {
         backgroundColor: '#80370f',
@@ -108,5 +122,8 @@ const styles = StyleSheet.create({
         borderRadius: 20,
         alignItems: 'center',
         justifyContent: 'center',
+    },
+    listContainer: {
+        flex: 1,
     },
 })

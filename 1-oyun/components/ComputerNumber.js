@@ -11,8 +11,8 @@ export default function ComputerNumber({ children }) {
 
 const styles = StyleSheet.create({
     container: {
-        borderWidth: 4,
-        borderColor: 'gray',
+        borderWidth: 3,
+        borderColor: 'lightgray',
         padding: 25,
         alignItems: 'center',
         borderRadius: 20,
