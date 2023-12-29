@@ -1,6 +1,7 @@
 import { Alert, StyleSheet, Text, TextInput, View } from 'react-native'
 import React, { useState } from 'react'
 import CustomButton from '../components/CustomButton'
+import Title from '../components/Title';
 
 export default function GameStartScreen({ onSendNumber }) {
 
@@ -28,7 +29,7 @@ export default function GameStartScreen({ onSendNumber }) {
 
     return (
         <View style={styles.container}>
-            <Text>Sayı Tahmin Uygulaması</Text>
+            <Title>Sayı Tahmin Uygulaması</Title>
             <View style={styles.card}>
                 <TextInput
                     style={styles.input}
@@ -58,7 +59,7 @@ const styles = StyleSheet.create({
         padding: 20,
     },
     card: {
-        backgroundColor: 'orange',
+        backgroundColor: '#80370f',
         alignItems: 'center',
         justifyContent: 'center',
         padding: 16,
@@ -72,12 +73,13 @@ const styles = StyleSheet.create({
     },
     input: {
         borderBottomWidth: 2,
-        borderBottomColor: 'yellow',
+        borderBottomColor: '#db9158',
         width: 50,
         height: 50,
         marginVertical: 10,
         fontSize: 35,
         fontWeight: 'bold',
+        textAlign: 'center',
     },
     buttonsContainer: {
         flexDirection: 'row',
