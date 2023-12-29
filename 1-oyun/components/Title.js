@@ -8,7 +8,7 @@ export default function Title({ children }) {
 const styles = StyleSheet.create({
     title: {
         borderWidth: 4,
-        borderColor: '#b34e29',
+        borderColor: '#80370f',
         textAlign: 'center',
         padding: 20,
         marginBottom: 20,
