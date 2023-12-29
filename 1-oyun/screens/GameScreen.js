@@ -12,16 +12,20 @@ export default function GameScreen({ userNumber, onGameOver }) {
 
     const initialGuess = generateNumber(1, 100, userNumber);
     const [currentGuess, setCurrentGuess] = useState(initialGuess);
+    const [guessCounts, setGuessCounts] = useState([initialGuess]);
 
     useEffect(() => {
         if (currentGuess === userNumber) {
-            onGameOver();
+            onGameOver(guessCounts.length);
         }
     }, [currentGuess, userNumber, onGameOver]);
 
+    useEffect(() => {
+        let minNumber = 1;
+        let maxNumber = 100;
+    }, [])
 
     function nextGuessHandler(direction) {
-
         if (
             (direction === 'lower' && currentGuess < userNumber)
             || (direction === 'greater' && currentGuess > userNumber)
@@ -40,6 +44,8 @@ export default function GameScreen({ userNumber, onGameOver }) {
 
         const newRandomNumber = generateNumber(minNumber, maxNumber, currentGuess);
         setCurrentGuess(newRandomNumber);
+
+        setGuessCounts((prevGuess) => [newRandomNumber, ...prevGuess])
     }
 
     function generateNumber(min, max, exclude) {
@@ -83,7 +89,7 @@ const styles = StyleSheet.create({
     buttonsContainer: {
         flexDirection: 'row',
     },
-    title:{
+    title: {
         color: 'white',
         fontSize: 25,
         marginBottom: 15,
