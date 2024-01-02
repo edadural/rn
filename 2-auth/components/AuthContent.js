@@ -19,7 +19,7 @@ export default function AuthContent({ isLogin }) {
     return (
         <View style={styles.container}>
             <AuthForm isLogin={isLogin} />
-            <View>
+            <View style={styles.button}>
                 <ButtonWhite onPress={switchScreen}>
                     {isLogin ? 'Yeni Kullanıcı Oluştur' : 'Giriş Yap'}
                 </ButtonWhite>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#822f82',
         marginTop: 50,
         marginHorizontal: 30,
-        padding: 15,
+        padding: 25,
         borderRadius: 20,
         // golge
         elevation: 4,
@@ -42,5 +42,8 @@ const styles = StyleSheet.create({
         shadowRadius: 6,
         shadowOpacity: 0.5,
         //
-    }
+    },
+    button: {
+        marginTop: 2,
+    },
 })

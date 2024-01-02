@@ -19,17 +19,16 @@ export default function Input({ label, keyboardType, onUpdateValue, value, secur
 
 const styles = StyleSheet.create({
     inputContainer: {
-        marginVertical:8,
+        marginVertical: 8,
     },
     label: {
         color: 'white',
-        marginBottom: 5,
+        marginBottom: 10,
     },
     input: {
         backgroundColor: '#f2d3ed',
-        paddingVertical: 8,
-        paddingHorizontal: 10,
+        padding: 11,
         borderRadius: 20,
-        fontSize: 16,
+        fontSize: 18,
     },
 })
