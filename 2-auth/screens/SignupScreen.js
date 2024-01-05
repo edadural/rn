@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Alert, StyleSheet, Text, View } from 'react-native'
 import React, { useState } from 'react'
 import AuthContent from '../components/AuthContent';
 import { createUser } from '../util/auth';
@@ -10,7 +10,11 @@ export default function SignupScreen() {
 
     async function signupHandler({ email, password }) {
         setIsAuthanticating(true);
-        await createUser(email, password);
+        try {
+            await createUser(email, password);
+        } catch (error) {
+            Alert.alert('Kayıt olunamadı. Lütfen bilgilerinizi kontrol ediniz..')
+        }
         setIsAuthanticating(false);
     }
 
