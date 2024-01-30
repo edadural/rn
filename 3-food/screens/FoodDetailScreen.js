@@ -1,12 +1,32 @@
-import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
+import React, { useLayoutEffect } from 'react'
 import { FOODS } from '../data/dummy-data';
 import FoodIngredients from '../components/FoodIngredients';
+import { AntDesign } from '@expo/vector-icons';
 
-export default function FoodDetailScreen({ route }) {
+export default function FoodDetailScreen({ route, navigation }) {
 
     const foodId = route.params.foodId;
-    const selectedFood = FOODS.find((food) => food.id === foodId)
+    const selectedFood = FOODS.find((food) => food.id === foodId);
+
+    const pressHandler = () => {
+        console.log("tıklandı");
+    }
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => {
+                return (
+                    <Pressable
+                        onPress={pressHandler}
+                        style={({ pressed }) => (pressed ? styles.pressed : null)}
+                    >
+                        <AntDesign name="staro" size={24} color="white" />
+                    </Pressable>
+                );
+            }
+        });
+    }, [navigation]);
 
     return (
         <ScrollView style={styles.rootContainer}>
@@ -67,4 +87,7 @@ const styles = StyleSheet.create({
         fontSize: 20,
         fontWeight: 'bold',
     },
+    pressed: {
+        opacity: 0.5,
+    }
 })
