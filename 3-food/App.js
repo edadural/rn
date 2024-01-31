@@ -9,6 +9,8 @@ import FavoritesScreen from './screens/FavoritesScreen';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
 import FavoritesContextProvider from './store/favoritescontext';
+import { Provider } from 'react-redux';
+import { store } from './store/redux/store';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -49,7 +51,8 @@ function DrawerNavigation() {
 export default function App() {
   return (
     <NavigationContainer>
-      <FavoritesContextProvider>
+      {/* <FavoritesContextProvider> */}
+      <Provider store={store}>
         <Stack.Navigator
           screenOptions={
             {
@@ -78,7 +81,8 @@ export default function App() {
             }}
           />
         </Stack.Navigator>
-      </FavoritesContextProvider>
+      </Provider>
+      {/* </FavoritesContextProvider> */}
     </NavigationContainer>
   );
 }
