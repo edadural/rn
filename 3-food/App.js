@@ -8,6 +8,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import FavoritesScreen from './screens/FavoritesScreen';
 import { AntDesign } from '@expo/vector-icons';
 import { Feather } from '@expo/vector-icons';
+import FavoritesContextProvider from './store/favoritescontext';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -48,34 +49,36 @@ function DrawerNavigation() {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator
-        screenOptions={
-          {
-            headerStyle: { backgroundColor: 'darkblue' },
-            headerTintColor: 'white',
-            contentStyle: { backgroundColor: 'lightblue' }
+      <FavoritesContextProvider>
+        <Stack.Navigator
+          screenOptions={
+            {
+              headerStyle: { backgroundColor: 'darkblue' },
+              headerTintColor: 'white',
+              contentStyle: { backgroundColor: 'lightblue' }
+            }
           }
-        }
-      >
-        <Stack.Screen
-          name="Drawer"
-          component={DrawerNavigation}
-          options={{
-            headerShown: false
-          }}
-        />
-        <Stack.Screen
-          name="FoodOverview"
-          component={FoodOverviewScreen}
-        />
-        <Stack.Screen
-          name="FoodDetail"
-          component={FoodDetailScreen}
-          options={{
-            title: 'İçerik'
-          }}
-        />
-      </Stack.Navigator>
+        >
+          <Stack.Screen
+            name="Drawer"
+            component={DrawerNavigation}
+            options={{
+              headerShown: false
+            }}
+          />
+          <Stack.Screen
+            name="FoodOverview"
+            component={FoodOverviewScreen}
+          />
+          <Stack.Screen
+            name="FoodDetail"
+            component={FoodDetailScreen}
+            options={{
+              title: 'İçerik'
+            }}
+          />
+        </Stack.Navigator>
+      </FavoritesContextProvider>
     </NavigationContainer>
   );
 }
