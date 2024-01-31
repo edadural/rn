@@ -1,16 +1,28 @@
-import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native'
-import React, { useLayoutEffect } from 'react'
+import { Image, Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
+import React, { useContext, useLayoutEffect } from 'react';
 import { FOODS } from '../data/dummy-data';
 import FoodIngredients from '../components/FoodIngredients';
 import { AntDesign } from '@expo/vector-icons';
+import { FavoritesContext } from '../store/favoritescontext';
 
 export default function FoodDetailScreen({ route, navigation }) {
 
+    const favoriteFoodContext = useContext(FavoritesContext);
     const foodId = route.params.foodId;
     const selectedFood = FOODS.find((food) => food.id === foodId);
 
+    const foodIsFavorite = favoriteFoodContext.ids.includes(foodId);
+
     const pressHandler = () => {
         console.log("tıklandı");
+    }
+
+    function changeFavorite() {
+        if (foodIsFavorite) {
+            favoriteFoodContext.removeFavorite(foodId);
+        } else {
+            favoriteFoodContext.addFavorite(foodId);
+        }
     }
 
     useLayoutEffect(() => {
@@ -21,12 +33,17 @@ export default function FoodDetailScreen({ route, navigation }) {
                         onPress={pressHandler}
                         style={({ pressed }) => (pressed ? styles.pressed : null)}
                     >
-                        <AntDesign name="staro" size={24} color="white" />
+                        <AntDesign
+                            name={foodIsFavorite ? 'star' : 'staro'}
+                            size={24}
+                            color="white"
+                            onPress={changeFavorite}
+                        />
                     </Pressable>
                 );
             }
         });
-    }, [navigation]);
+    }, [navigation, changeFavorite]);
 
     return (
         <ScrollView style={styles.rootContainer}>
