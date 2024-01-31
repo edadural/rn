@@ -2,14 +2,14 @@ import Category from '../models/category';
 import Food from '../models/food';
 
 export const CATEGORIES = [
-  new Category('c1', 'İtalyan', 'pink'),
-  new Category('c2', 'Aperatif', 'darkpink'),
-  new Category('c3', 'Hamburger', 'brown'),
-  new Category('c4', 'Alman', 'yellow'),
-  new Category('c5', 'Diyet', 'blue'),
-  new Category('c6', 'Egzotik', 'green'),
-  new Category('c7', 'Kahvaltı', 'lightblue'),
-  new Category('c8', 'Hint', 'lightgreen'),
+  new Category('c1', 'İtalyan', '#fff5c2'),
+  new Category('c2', 'Aperatif', '#d6985a'),
+  new Category('c3', 'Hamburger', '#f5c6c9'),
+  new Category('c4', 'Alman', '#e86f75'),
+  new Category('c5', 'Diyet', '#c7c7ff'),
+  new Category('c6', 'Egzotik', '#6161ff'),
+  new Category('c7', 'Kahvaltı', '#8de3cb'),
+  new Category('c8', 'Hint', '#29ab87'),
 ];
 
 export const FOODS = [

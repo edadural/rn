@@ -13,7 +13,7 @@ export default function CategoriesScreen({ navigation }) {
             });
         }
 
-        console.log(itemData.item);
+        // console.log(itemData.item);
         return (
             <CategoryGrid
                 title={itemData.item.title}
